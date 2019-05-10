@@ -1,13 +1,14 @@
-# 找出数组中重复的数字
+# 面试题3：找出数组中重复的数字
 
 
+# 原始题目解法
 class Solution1(object):
     # 这里要特别注意~找到任意重复的一个值并赋值到duplication[0]
     # 函数返回True/False
     def duplicate(self, numbers, duplication):
-        # write code here
 
         # 前面这两个判断是很重要的,保证了代码的鲁棒性
+        # 当实现了函数的功能之后，要根据实际需求对各种异常情况进行处理
         if numbers is None or len(numbers) <= 1:
             return False
         for i in range(len(numbers)):
@@ -26,8 +27,6 @@ class Solution1(object):
         # used_dic = {}
         # used_dic = set()
         # for i in range(len(numbers)):
-        #     if numbers[i] < 0 or numbers[i] > len(numbers) - 1:
-        #         return False
         #     if numbers[i] not in used_dic:
         #         used_dic[numbers[i]] = 1
         #     else:
@@ -50,9 +49,9 @@ class Solution1(object):
         return False
 
 
-# 题目变形
+# 题目变形： 增加了额外的要求
 # 不修改数组找出重复的数字
-# 方法一: 复制一个长度为n+1的空间, 把原来数组的数字m复制到下标为m的位置, 如果某个位置已经有值了, 就找到了重复的数字
+# 方法一: 和题目1中方法三同理
 class Solution2:
     def duplicate1(self, numbers, duplication):
 
@@ -68,40 +67,73 @@ class Solution2:
                 return True
 
     # 方法二
-    # 二分查找: 对长度为n的数组需要查找logn次, 总的事件复杂度是nlogn
-    def duplicate2(self, numbers):
-        # write code here
-        if not numbers or len(numbers) <= 0:
+    # 先用m把数组分成两个部分, 如果没有重复的数字, 那么大于m的数字和小于m的数字数目
+    # 思路类似于二分查找, 边查找边统计每部分的数量
+    # 注意是对数进行二分查找, 不是索引
+    # 对长度为n的数组需要查找logn次, 总的时间复杂度是nlogn
+    # 书上思路代码
+    def duplicateInArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype int
+        """
+        if len(nums) <= 0 or not numbers:
             return
 
+        length = len(nums)
         start = 1
-        end = len(numbers) - 1
-        count = 0
+        end = length - 1
 
-        while start <= end:
-            middle = (end - start) // 2 + start
-
-            for i in range(len(numbers)):
-                if numbers[i] >= start and numbers[i] <= middle:
-                    count += 1
-
+        while end >= start:
+            middle = start + (end - start) / 2
+            count = self.countNum(nums, length, start, middle)
             if end == start:
-                if count == 0 and numbers[start] == numbers[end]:
-                    return numbers[start]
-                elif count >= 1:
-                    return numbers[start]
+                if count > 1:
+                    return start
+                else:
+                    break
 
-            if count > middle - start + 1:
+            if count > (middle - start) + 1:
                 end = middle
             else:
                 start = middle + 1
 
         return False
 
+    def countNum(self, numbers, length, start, end):
+        count = 0
+        for i in range(length):
+            if numbers[i] < 1 or numbers[i] > length:
+                return False
+            if start <= numbers[i] <= end:
+                count += 1
+        return count
 
-# duplication = []
-# print(Solution2().duplicate1([2, 3, 5, 4, 3, 2, 6, 7], duplication))
-# print(duplication)
+    # 更简洁的写法
+    # 下面的代码是要求数组中必须存在重复的数字
+    # [0,1,2,3]这种情况就处理不了了
+    def duplicateInArray2(self, nums):
 
-print(Solution2().duplicate2([2, 3, 5, 4, 3, 2, 6, 7]))
-print(Solution2().duplicate2([3, 3, 2, 2]))
+        if not nums or len(nums) <= 0:
+            return
+
+        l = 1
+        r = len(nums) - 1
+
+        while l < r:
+            mid = l + (r - l + 1) // 2
+            count = 0
+            for num in nums:
+                if num < mid:
+                    count += 1
+
+            if count < mid:
+                # 此时重复的数一定在 [mid,right] 中
+                l = mid
+            else:
+                assert count >= mid
+                r = mid - 1
+
+        return l
+
+
