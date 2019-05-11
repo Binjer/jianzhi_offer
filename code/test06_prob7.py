@@ -9,7 +9,7 @@ class TreeNode:
         self.right = None
 
 
-# 用递归解决.
+# 用递归解决
 class Solution:
     # 返回构造的TreeNode根节点
     def reConstructBinaryTree(self, pre, tin):
