@@ -34,7 +34,8 @@ class Solution(object):
 # 删除某一个元素时, 因为栈是先入先出, 我们只能在队列头部删除元素, 因此把队列元素依次删除并加入到另一个队列中;
 # 然后交换这两个队列的作用, 并弹出第一个(交换后变成第二个队列中)仅剩的一个元素
 
-class Solution2:
+
+class Solution2(object):
     def __init__(self):
         self.queue1 = []
         self.queue2 = []
