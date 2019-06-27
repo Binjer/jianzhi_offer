@@ -1,15 +1,21 @@
-# 数值的整数次方
-# 底数为浮点型, 指数为整型, 不考虑大数问题.
+# 面试题16：数值的整数次方
+
+# 底数为浮点型, 指数为整型, 要求不能使用库函数，不考虑大数问题.
+
+# 规范的代码有下面三个要求：
+# 1.能完成基本功能
+# 2.输入边界值也能得到正确的输出
+# 3.对各种不合规范的非法输入做了合适的处理
 
 
-class Solution:
+class Solution(object):
     def Power(self, base, exponent):
 
         g_InvalidInput = False
         if base == 0.0 and exponent < 0:
-            g_InvalidInput = True
-            print("非法输入")
-            return
+            g_InvalidInput = True  # 可用于判断错误来源
+            # print("非法输入")
+            return "非法输入"
 
         if exponent >= 0:
             return self.PowerWithUnsignedExponent(base, exponent)
@@ -37,4 +43,6 @@ class Solution:
 
 
 s = Solution()
-s.Power(2.0, 3)
+print(s.Power(2.0, 3))
+print(s.Power(2.0, -3))
+print(s.Power(0, -3))
