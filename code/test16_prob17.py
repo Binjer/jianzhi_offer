@@ -99,6 +99,84 @@ class Solution2(object):
         # return
 
 
-if __name__ == "__main__":
-    # Solution1().Print1ToMaxOfNDigits(3)
-    Solution2().Print1ToMaxOfNDigits(3)
+# if __name__ == "__main__":
+#     # Solution1().Print1ToMaxOfNDigits(3)
+#     # Solution2().Print1ToMaxOfNDigits(3)
+
+
+# 相关题目：前面的代码中，我们都是用一个char型字符表示十进制数字的一位。
+# 8个bit的char型字符最多能表示256个字符，而十进制数字只有0-9的10个数字。
+# 因此用char型字符串来表示十进制的数字并没有充分利用内存，有一些浪费。
+# 有没有更高效的方式来表示大数。
+# 答：BitMap算法，尤其是处理大数据时十分有用，可以节省空间
+
+# 2)定义一个函数，在该函数中可以实现任意两个整数的加法。由于没有限定输入
+# 两个数的大小范围，我们也要把它当做大数问题来处理。在前面的代码的第一个
+# 思路中，实现了在字符串表示的数字上加1的功能，我们可以参考这个思路实现
+# 两个数字相加功能，另外还有一个需要注意的问题：如果输入的数字中有负数，
+# 我们应该怎么处理？
+# 答：同理可实现减法，有一个负号时先确定减数与被减数，有两个负号先调用加法，最后结果再添加一个负号
+
+
+# 下面是字符串实现的加法(参考思路即可)
+def add_by_str(a, b):
+    l1 = len(a)
+    l2 = len(b)
+
+    # 字符串在python中是不可变类型，所以先转为list
+    a = list(a)
+    b = list(b)
+
+    c = [0] * (max(l1, l2) + 1)  # c比两者中更长的那个数长一位的原因在于可能有进位
+
+    if l1 >= l2:
+        index1 = l1 - 1
+        index2 = l2 - 1
+
+        while index1 >= 0 and index2 >= 0:
+            index_sum = int(a[index1]) + int(b[index2]) + c[index1 + 1]
+            less = index_sum - 10
+            c[index1 + 1] = index_sum % 10
+            c[index1] = 1 if less >= 0 else 0
+
+            index1 -= 1
+            index2 -= 1
+
+        while index1 >= 0:
+            index_sum = int(a[index1]) + c[index1 + 1]
+            less = index_sum - 10
+            c[index1 + 1] = index_sum % 10
+            c[index1] = 1 if less >= 0 else 0
+            index1 -= 1
+    else:
+        index1 = l1 - 1
+        index2 = l2 - 1
+
+        while index1 >= 0 and index2 >= 0:
+            index_sum = int(a[index1]) + int(b[index2]) + c[index2 + 1]
+            less = index_sum - 10
+            c[index2 + 1] = index_sum % 10
+            c[index2] = 1 if less >= 0 else 0
+
+            index1 -= 1
+            index2 -= 1
+
+        while index2 >= 0:
+            index_sum = int(b[index2]) + c[index2 + 1]
+            less = index_sum - 10
+            c[index2 + 1] = index_sum % 10
+            c[index2] = 1 if less >= 0 else 0
+            index2 -= 1
+
+    c = [str(i) for i in c]
+    for i in range(len(c)):
+        if c[i] != "0":
+            sum_str = "".join(c[i:])
+            return sum_str
+
+
+# b = "2234"
+# a = "67891"
+a = "22341748783187478748431981984587537813843919889518951"
+b = "67891151535616541781849854981489148941511355"
+print(add_by_str(a, b))
