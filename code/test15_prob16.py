@@ -43,6 +43,6 @@ class Solution(object):
 
 
 s = Solution()
-print(s.Power(2.0, 3))
+print(s.Power(2.0, 4))
 print(s.Power(2.0, -3))
 print(s.Power(0, -3))

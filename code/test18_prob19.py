@@ -1,4 +1,4 @@
-# 正则表达式匹配
+# 面试题19：正则表达式匹配
 # .可以匹配任意一个字符, *代表前面的字符可以出现0~任意次
 
 # 思路分析: 递归的思想来实现
@@ -15,7 +15,12 @@
 
 # 如果s[0] != p[0], 返回False, 即不匹配
 
-class Solution:
+
+# python中is 主要是判断 2 个变量是否引用的是同一个对象
+# python中== 主要是判断 2 个变量的值是否相等
+
+
+class Solution(object):
     # s, pattern都是字符串
     def match(self, s, pattern):
         # write code here
@@ -27,12 +32,19 @@ class Solution:
         if not p:
             return False
 
+        # 这部分是pattern第二位是*的情况，需要递归解决
         if len(p) > 1 and p[1] == "*":
             if s and (s[0] == p[0] or p[0] == "."):
                 return self.match(s, p[2:]) or self.match(s[1:], p) or self.match(s[1:], p[2:])
             else:
                 return self.match(s, p[2:])
-        elif (s and s[0] == p[0]) or (s and p[0] == "."):
+        # 这部分是pattern第二位不是*的情况，只需要判断第一位是不是相同或者pattern的第一位是不是.就可以了
+        elif s and (s[0] == p[0] or p[0] == "."):
             return self.match(s[1:], p[1:])
 
         return False
+
+
+if __name__ == '__main__':
+    s = Solution()
+    print(s.match("", "."))

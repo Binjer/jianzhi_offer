@@ -58,7 +58,7 @@ class Solution2(object):
             if cur.val == cur.next.val:
                 val = cur.val
                 # 找到下一个不重复的节点(值与val不同)
-                while cur and cur.val == val:
+                while cur and cur.val == val:  # 当找到链表尾部时, cur=None才会结束
                     cur = cur.next
                 pre.next = cur
             else:

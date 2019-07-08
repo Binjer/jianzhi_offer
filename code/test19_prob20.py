@@ -1,12 +1,18 @@
-# 表示数值的字符串
+# 面试题20：表示数值的字符串
+
+# 请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。
+# 例如，字符串"+100","5e2","-123","3.1416"和"-1E-16"都表示数值。
+# 但是"12e","1a3.14","1.2.3","+-5"和"12e+4.3"都不是。
+
 # 思路解析:
-# 数值行字符串可以表示为A.B(e/E)C
+# 数值型字符串可以表示为A.B(e/E)C
 # 其中A, B, C代表3个子串, 其中A和C的首位可以是正负号或者0~9, 其余位只能是0~9, B的每一位都只能是0~9
 
-class Solution:
-    # s字符串
+
+# 书上的思路
+class Solution(object):
+
     def isNumeric(self, s):
-        # write code
         if not s or len(s) <= 0:
             return False
 
@@ -40,16 +46,10 @@ class Solution:
         return True
 
 
-s = Solution()
-print(s.isNumeric("+789123.4155E67812"))
-print(s.isNumeric("+789123.4155E67812."))
-print(s.isNumeric("+789123.4155E6E7812"))
-
-
+# 解法二：比较直接的分析思路
 class Solution2(object):
-    # s字符串
+
     def isNumeric(self, s):
-        # write code here
         if not s or len(s) == 0:
             return False
 
@@ -77,10 +77,18 @@ class Solution2(object):
                 # 重复出现符号时，必须跟在e后面
                 if hasSign and s[i - 1] != "e" and s[i - 1] != "E":
                     return False
-                # 重复出现符号时，必须跟在e后面
+                # 这里有一个细节是Python中的and如果前面的条件为假, 就不会去判断后面的了
+                # 第一次出现+-符号,如果i==0是直接不满足下面的条件的
                 if not hasSign and i > 0 and s[i - 1] != "e" and s[i - 1] != "E":
                     return False
                 hasSign = True
             elif s[i] < "0" or s[i] > "9":
                 return False
         return True
+
+
+if __name__ == '__main__':
+    s = Solution()
+    print(s.isNumeric("+789123.4155E67812"))
+    print(s.isNumeric("+789123.4155E67812."))
+    print(s.isNumeric("+789123.4155E6E7812"))

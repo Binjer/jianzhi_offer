@@ -28,7 +28,7 @@ class Solution(object):
                 if product > max:
                     max = product
             products[i] = max
-
+        print(products)
         return products[n]
 
     # 方法二：贪婪算法
