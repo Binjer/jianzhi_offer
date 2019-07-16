@@ -1,7 +1,10 @@
-# 链表中的倒数第k个节点
+# 面试题22：链表中的倒数第k个节点
 # 要求: 只能遍历一遍链表
 
-class Solution:
+
+# 这种解题思路在于维护两个指针, 一个先走, 然后两个同时走
+# 类似的题目还会有一个指针一次走两步, 另一个一次走一步, 这样就能找到链表中间的节点
+class Solution(object):
     def FindKthToTail(self, head, k):
         # write code here
 
