@@ -6,7 +6,6 @@
 # 类似的题目还会有一个指针一次走两步, 另一个一次走一步, 这样就能找到链表中间的节点
 class Solution(object):
     def FindKthToTail(self, head, k):
-        # write code here
 
         # 代码鲁棒性控制
         if k <= 0:
