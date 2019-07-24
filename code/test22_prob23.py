@@ -6,7 +6,14 @@
 # 知道了环中的节点数目, 就可以找到环的入口节点了
 
 
-class Solution(object):
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
+# 解法一：书中思路
+class Solution1(object):
     def EntryNodeOfLoop(self, pHead):
 
         # 代码的鲁棒性
@@ -46,9 +53,51 @@ class Solution(object):
         # return post
 
         # 上述代码可以简化的, 确认有环后, 把一个节点重新指向头结点, 再以相同的速度往下走,相遇的节点就是环的入口节点
+        # 证明见：https://www.cnblogs.com/shiganquan/p/9340999.html
         p1 = pHead
         while p1 != p2:
             p1 = p1.next
             p2 = p2.next
 
         return p1
+
+
+# 解法二：断链法
+class Solution2(object):
+    def EntryNodeOfLoop(self, pHead):
+
+        if pHead.next is None or pHead.next is None:
+            return None
+
+        newHead = ListNode(-1)
+        newHead.next = pHead  # 用一个新节点记录完整的链表
+
+        pre = newHead  # 链表第一个节点也可能是环的入口
+        walkNode = pHead
+
+        while walkNode is not None:
+            pre.next = None
+            pre = walkNode
+            walkNode = walkNode.next
+
+        return pre
+
+
+# 解法三：利用哈希表
+class Solution3(object):
+    def EntryNodeOfLoop(self, pHead):
+
+        if pHead.next is None or pHead.next is None:
+            return None
+
+        d = {}
+        cur = pHead
+
+        while cur is not None:
+            if cur in d:
+                return cur
+            else:
+                d[cur] = 1
+            cur = cur.next
+
+        return cur
