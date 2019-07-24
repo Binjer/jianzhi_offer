@@ -20,6 +20,8 @@ class Solution(object):
         result = False
 
         if pRoot1 and pRoot2:
+            # 这里有一个细节是计算机是如何判定两个小数相等的，计算机内表示小数时都有误差，
+            # 因此判断两个小数是否相等，是判断它们的差的绝对值是不是小于某个很小的阈值，是的话就判定它们相等
             if pRoot1.val == pRoot2.val:
                 result = self.iseuqual(pRoot1, pRoot2)  # 注意函数能执行这一步意味着A中至少有一个节点的值与B的根节点的值相同
 
