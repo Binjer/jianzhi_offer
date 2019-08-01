@@ -11,7 +11,7 @@ class Solution(object):
 
     def isSymmetrical(self, pRoot):
         if not pRoot:
-            return True  # 空树要按照题目要求
+            return True  # 空树要按照题目要求返回值
 
         return self.isSymmert(pRoot, pRoot)
 
