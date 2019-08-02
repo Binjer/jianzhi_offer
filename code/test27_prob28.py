@@ -6,16 +6,17 @@
 # 如果两者一样, 说明二叉树是对称的
 
 
-# 镜像的前序遍历就是原树的后向遍历
+# 一个指针根左右来遍历，另一个指针以跟右左来遍历，同时比较两个指针指向的值是否相同
+# 考虑到左或右子树缺失的情况，将空指针也考虑进来
 class Solution(object):
 
     def isSymmetrical(self, pRoot):
         if not pRoot:
             return True  # 空树要按照题目要求返回值
 
-        return self.isSymmert(pRoot, pRoot)
+        return self.isSymmertrical(pRoot, pRoot)
 
-    def isSymmert(self, root1, root2):
+    def isSymmertrical(self, root1, root2):
 
         if root1 is None and root2 is None:  # 把空指针也考虑进来
             return True
@@ -26,4 +27,4 @@ class Solution(object):
         if root1.val != root2.val:  # 左右值不一致则返回False
             return False
 
-        return self.isSymmert(root1.left, root2.right) and self.isSymmert(root1.right, root2.left)
+        return self.isSymmertrical(root1.left, root2.right) and self.isSymmertrical(root1.right, root2.left)
