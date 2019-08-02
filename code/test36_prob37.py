@@ -1,4 +1,7 @@
-# 序列化和反序列化二叉树
+# 面试题37：序列化和反序列化二叉树
+
+# 实现两个函数，用来序列化和反序列化二叉树
+
 
 class TreeNode:
     def __init__(self, x):
@@ -10,14 +13,14 @@ class TreeNode:
 class Solution(object):
     # 序列化
     def Serialize(self, root):
-        # write code here
+        # 按照前序遍历的顺序序列化
         if not root:
             return "$"
         return str(root.val) + ',' + self.Serialize(root.left) + ',' + self.Serialize(root.right)
 
     # 反序列化
     def Deserialize(self, s):
-        # write code here
+
         li = s.split(",")
         return self.DeserializeCore(li)
 
