@@ -1,4 +1,5 @@
-# 栈的压入, 弹出序列
+# 面试题31：栈的压入, 弹出序列
+
 
 '''
 题目：输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字
@@ -25,21 +26,27 @@
 
 class Solution(object):
     def IsPopOrder(self, pushV, popV):
-        # write code here
+
         if not pushV or not popV:
             return
 
-        stack = []
+        # 定义一个辅助栈
+        s1 = []
 
         while popV:
+            # 当压栈序列第一个值和弹出序列第一个值相等的时候，弹出两个序列的第一个值，继续比较
+            # 这里判断pushV是否为空是为了防止数组越界，下面的s1同理
             if pushV and pushV[0] == popV[0]:
                 pushV.pop(0)
                 popV.pop(0)
-            elif stack and stack[-1] == popV[0]:
-                stack.pop()
+            # 当辅助栈中的最后一个值和弹出序列的第一个值相等的时候，可以把辅助栈中的最后一个值弹出，同时弹出序列也往后移动
+            elif s1 and s1[-1] == popV[0]:
+                s1.pop()
                 popV.pop(0)
+            # 当上面两个条件都不满足的时候，把压栈序列的值不断压入辅助栈
             elif pushV:
-                stack.append(pushV.pop(0))
+                s1.append(pushV.pop(0))
+            # 压栈序列的值已经完全压入到辅助栈了还是找不到与弹出序列第一位相等的值，则返回False
             else:
                 return False
 
