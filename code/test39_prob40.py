@@ -1,15 +1,19 @@
-# 最小的k个数
+# 面试题40：最小的k个数
+
 # 输入n个整数, 找出其中最小的k个数.
 # 问题分析: 对时间和空间的要求, 是否是海量数据情形
 
-class Solution1:
+
+class Solution1(object):
     def GetLeastNumbers_Solution(self, tinput, k):
-        # write code here
+
         # 这里需要多判断一下数组为空的情况
         if k > len(tinput) or len(tinput) <= 0:
             return []
 
-        res = self.partitionOfK(tinput, 0, len(tinput) - 1, k)
+        res = self.partitionOfK(tinput, 0, len(tinput) - 1, k)  # 此时返回的数可能不是排序的
+        res.sort()  # 牛客上要求输出是升序排列
+
         return res
 
     def partitionOfK(self, numbers, start, end, k):
@@ -49,18 +53,10 @@ class Solution1:
 # 1.创建一个大小为k的容器
 # 2.从数组中依次读入一个数,当容器未满时, 直接加入;
 #  容器已满时, 将新数据与容器中的最大值比较,比最大值小则替换,否则不变
-
-
-
-class Solution2:
+class Solution2(object):
     def GetLeastNumbers_Solution(self, tinput, k):
-        # write code here
         import heapq
         if k > len(tinput):
             return []
 
         return heapq.nsmallest(k, tinput)
-
-
-
-
