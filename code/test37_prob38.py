@@ -1,8 +1,10 @@
-# 字符串的排列
+# 面试题38：字符串的排列
 
+
+# 书上的思路
 class Solution1(object):
     def Permutation(self, ss):
-        # write code here
+
         res = []
         if len(ss) == 0:
             return res
@@ -12,7 +14,7 @@ class Solution1(object):
         self.permutation(charlist, 0, res)
 
         res = [''.join(res[i]) for i in range(len(res))]
-        res.sort()
+        # res.sort()
 
         return res
 
@@ -32,6 +34,12 @@ class Solution1(object):
                     ss[begin], ss[i] = ss[i], ss[begin]
 
 
+# s = Solution1()
+# res = s.Permutation("abc")
+# print(res)
+# print(len(res))
+
+
 class Solution2(object):
     """
     这一解法的思路在于每次从字符串的相同位置取出一个字母,并把他们拼接起来, 相当于把第一个字母和后面的字母依次交换了位置.
@@ -39,13 +47,15 @@ class Solution2(object):
     """
 
     def Permutation(self, ss):
-        # write code here
+
         if not ss:
             return []
         res = []
         self.helper(ss, res, '')
 
-        return sorted(list(set(res)))
+        return res
+
+        # return sorted(list(set(res)))
 
     def helper(self, ss, res, path):
         if not ss:
@@ -56,53 +66,58 @@ class Solution2(object):
 
 
 # s = Solution2()
-# res = s.Permutation("abc")
+# res = s.Permutation("aac")
 # print(res)
 # print(len(res))
 
 
-# 组合问题
-def combinations(iterable, r):
-    # combinations('ABCD', 2) --> AB AC AD BC BD CD
-    # combinations(range(4), 3) --> 012 013 023 123
-    pool = tuple(iterable)
-    n = len(pool)
-    if r > n:
-        return
-    indices = list(range(r))
-    yield tuple(pool[i] for i in indices)
-    while True:
-        for i in reversed(range(r)):
-            if indices[i] != i + n - r:
-                break
-        else:
-            return
-        indices[i] += 1
-        for j in range(i + 1, r):
-            indices[j] = indices[j - 1] + 1
-        yield tuple(pool[i] for i in indices)
-
-
-
-def listzh(a1, mylist, res):
-    # 递归解法
-    if 2 == len(mylist):
-        print(a1 + mylist[0] + mylist[1])
-        print(a1 + mylist[1] + mylist[0])
-        res.append(a1 + mylist[0] + mylist[1])
-        res.append(a1 + mylist[1] + mylist[0])
-    else:
-        for i, j in enumerate(mylist):
-            # 切片操作后面加中括号带默认索引的话表示复制了一份,
-            # 不带的话就是单纯的引用
-            c = mylist[:]
-            c.pop(i)
-            listzh(a1 + j, c, res)
-
-
-# strs = 'aat'
-# mylist = list(set(list(strs)))
-# # mylist=['ab','c','123'] #可以给定任意需要组合的list
+# # 组合问题  这是combinations库的源代码
+# def combinations(iterable, r):
+#     # combinations('ABCD', 2) --> AB AC AD BC BD CD
+#     # combinations(range(4), 3) --> 012 013 023 123
+#     pool = tuple(iterable)
+#     n = len(pool)
+#     if r > n:
+#         return
+#     indices = list(range(r))
+#     yield tuple(pool[i] for i in indices)
+#     while True:
+#         for i in reversed(range(r)):
+#             if indices[i] != i + n - r:
+#                 break
+#         else:
+#             return
+#         indices[i] += 1
+#         for j in range(i + 1, r):
+#             indices[j] = indices[j - 1] + 1
+#         yield tuple(pool[i] for i in indices)
+#
+#
 # res = []
-# listzh('', mylist, res)
+# for i in combinations("abc", 2):
+#     # print("".join(i))
+#     res.append("".join(i))
+# print(res)
+
+# def list_zuhe(a1, mylist, res):
+#     # 递归解法
+#     if 2 == len(mylist):
+#         # print(a1 + mylist[0] + mylist[1])
+#         # print(a1 + mylist[1] + mylist[0])
+#         res.append(a1 + mylist[0] + mylist[1])
+#         res.append(a1 + mylist[1] + mylist[0])
+#     else:
+#         for i, j in enumerate(mylist):
+#             # 切片操作后面加中括号带默认索引的话表示复制了一份,
+#             # 不带的话就是单纯的引用
+#             c = mylist[:]
+#             c.pop(i)
+#             list_zuhe(a1 + j, c, res)
+#
+#
+# strs = 'abc'
+# mylist = list(set(list(strs)))
+# # mylist=['ab','c','123'] # 可以给定任意需要组合的list
+# res = []
+# list_zuhe('', mylist, res)
 # print(res)
