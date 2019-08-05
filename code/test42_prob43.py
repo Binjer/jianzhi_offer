@@ -25,7 +25,7 @@ class Solution1(object):
 
 
 # 解法二：O(logn)的解法
-# https://www.cnblogs.com/nailperry/p/4752987.html
+# 具体分析见：https://www.cnblogs.com/nailperry/p/4752987.html
 # 当计算右数第 i 位包含的 X 的个数时：
 # 取第 i 位左边（高位）的数字，乘以 10**i−1，得到基础值 a。
 # 取第 i 位数字，计算修正值：

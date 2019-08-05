@@ -48,7 +48,6 @@ class Solution1(object):
 s1 = Solution1()
 print(s1.digitAtIndex(13))  # 1
 print(s1.digitAtIndex(19))  # 4
-print(s1.digitAtIndex(20))  # 1
 
 
 # 解法二: 更简洁的写法, 思路其实和解法一差不多

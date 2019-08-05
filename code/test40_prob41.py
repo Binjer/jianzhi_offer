@@ -3,6 +3,8 @@
 # 1.使用排序的数组
 # 插入元素: O(n). 插入新数据时让数组保持有序，可能需要移动n个数，所以时间复杂度为O(n)
 # 查找中位数: O(1)
+
+
 class Solution(object):
     def __init__(self):
         self.li = []
