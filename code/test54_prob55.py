@@ -1,8 +1,9 @@
-# 二叉树的深度
+# 面试题55：二叉树的深度
+
 # 输入一棵二叉树的根结点，求该树的深度。
 # 从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的长度为树的深度。
 
-# Definition for a binary tree node.
+# 二叉树节点定义如下
 # class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
@@ -16,12 +17,8 @@
 # 如果一棵树只有左子树没有右子树, 那么它的深度就等于左子树的深度加1
 # 类似的, 如果一棵树只有右子树没有左子树, 那么它的深度就等于右子树的深度加1
 # 既有左子树又有右子树时, 深度等于左右子树中较大的深度加1(包含了所有情况)
-class Solution:
+class Solution(object):
     def treeDepth(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
         if not root:
             return 0
 
@@ -38,10 +35,7 @@ class Solution:
 # 遍历每一个节点并判断即可
 class Solution21(object):
     def isBalanced(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
+
         if not root:
             return True
 
@@ -51,13 +45,10 @@ class Solution21(object):
         if abs(left - right) > 1:
             return False
 
-        return self.isBalanced(root.left) and self.isBalanced()
+        return self.isBalanced(root.left) and self.isBalanced(root.right)
 
     def treeDepth(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
+
         if not root:
             return 0
 
@@ -68,12 +59,11 @@ class Solution21(object):
 
 
 # 每个节点只需要遍历一次的解法
+# 用后序遍历去遍历二叉树，在遍历到一个节点之前我们已经遍历了它的左右子树。
+# 在遍历的时候我们记录它的深度--某一节点的深度等于它到叶节点的路径的长度，一边遍历一边判断每个节点是不是平衡的
 class Solution22(object):
     def isBalanced(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
+
         if not root:
             return True
 
