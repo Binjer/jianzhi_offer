@@ -1,10 +1,11 @@
-# 最长不含重复字符的子字符串
+# 面试题48：最长不含重复字符的子字符串
 
 # 请从字符串中找出一个最长的不包含重复字符的子字符串，计算该最长字符串的长度。
 # 假设字符串中只包含‘a’-‘z’的字符。
 # 例如，在字符串“arabcacfr”中，最长的不含重复字符的子字符串是“acfr”，长度为4。
 
 
+# 书上的思路
 class Solution1(object):
     def lengthOfLongestSubstring(self, s):
         """
@@ -34,6 +35,7 @@ class Solution1(object):
 
 
 # s1 = Solution1()
+# print("*" * 5, "解法一", "*" * 5)
 # print(s1.lengthOfLongestSubstring("arabcacfr"))
 
 
@@ -61,10 +63,10 @@ class Solution2(object):
 
 
 s2 = Solution2()
+print("*" * 5, "解法二", "*" * 5)
 print(s2.lengthOfLongestSubstring("arabcacfr"))
 print(s2.lengthOfLongestSubstring("aaaaaa"))
 print(s2.lengthOfLongestSubstring("abccbabc"))
-print(s2.lengthOfLongestSubstring("aaadsvdadfa"))
 
 
 # 动态规划
@@ -94,12 +96,13 @@ class Solution3(object):
                 # 如果重复字符之间的距离d小于f(i-1), 此时有f(i) = d
                 else:
                     dp[i] = i - d[s[i]]
-            d[s[i]] = i
+            d[s[i]] = i  # 把元素对应的索引存进哈希表
 
         return max(dp)
 
 
 s3 = Solution3()
+print("*" * 5, "解法三", "*" * 5)
 print(s3.lengthOfLongestSubstring("arabcacfr"))
 print(s3.lengthOfLongestSubstring("aaaaaa"))
 print(s3.lengthOfLongestSubstring("abccbabc"))
