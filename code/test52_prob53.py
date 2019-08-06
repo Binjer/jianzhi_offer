@@ -1,15 +1,16 @@
-# 在排序数组中查找给定数字出现的次数
+# 面试题54：在排序数组中查找给定数字出现的次数
 
-# 二分查找
+# 给定一个排序的数组和一个数，统计这个数在数组中出现的次数
+
+# 最直观的解法是遍历一遍整个数组，每次遇到指定数字，则次数加一
+# 这种思路显然没有用到排序数组的性质
+
+
+# 更高效的解法：二分查找
 # 先找到数字出现的第一个位置, 同理找到数字出现的最后一个位置
-# 算法复杂度是logn
+# 算法时间复杂度是logn
 class Solution(object):
     def getNumberOfK(self, nums, k):
-        """
-        :type nums: list[int]
-        :type k: int
-        :rtype: int
-        """
 
         if not nums or len(nums) <= 0:
             return 0
@@ -56,8 +57,6 @@ class Solution(object):
                 return middleIndex
             else:
                 start = middleIndex + 1
-
-
         elif middleData > k:
             end = middleIndex - 1
         else:
@@ -69,10 +68,7 @@ class Solution(object):
 # 题目变形: 0~n-1中缺失的数字
 class Solution11(object):
     def getMissingNumber(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+
         if not nums or len(nums) <= 0:
             return 0
 
@@ -105,10 +101,6 @@ class Solution11(object):
 # 请编程实现一个函数找出数组中任意一个数值等于其下标的元素。
 class Solution22(object):
     def getNumberSameAsIndex(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
 
         if not nums or len(nums) <= 0:
             return 0

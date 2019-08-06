@@ -1,4 +1,10 @@
-# 两个链表的第一个公共节点
+# 面试题52：两个链表的第一个公共节点
+
+# 输入两个链表，找出它们的第一个公共节点。链表节点定义如下
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
 
 # 解法一:
@@ -73,9 +79,10 @@ class Solution2(object):
         return p1
 
     def getLen(self, head):
-        count = 0
+        """给定头节点返回链表长度"""
+        length = 0
         while head:
-            count += 1
+            length += 1
             head = head.next
 
-        return count
+        return length
