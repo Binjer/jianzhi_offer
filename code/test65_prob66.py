@@ -28,6 +28,7 @@ class Solution(object):
 
         return b
 
+
         # 代码可以再优化一下， 只用一个tmp保存d的临时值即可
         # b = [1] * length
         #
