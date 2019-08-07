@@ -1,4 +1,7 @@
-# 股票的最大利润
+# 面试题63：股票的最大利润
+
+# 把某股票的价格按照时间先后顺序存储在数组中，请问买卖该股票一次可能获得的最大利润是多少？
+
 
 # 解法一: 暴力解法, 找到所有数对差值的最大值
 # O(n2)的时间复杂度 的时间复杂度
@@ -12,7 +15,7 @@ class Solution(object):
         if not nums or len(nums) <= 1:
             return 0
 
-        curMax = 0
+        curMax = 0  # 如果考虑到股票价格一直下跌的情况，那么curMax可以初始化为无穷小
         for i in range(len(nums)):
             for j in range(i, len(nums)):
                 if nums[j] - nums[i] > curMax:
