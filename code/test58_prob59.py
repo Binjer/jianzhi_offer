@@ -1,10 +1,10 @@
-# 滑动窗口中的最大值
+# 面试题59：滑动窗口中的最大值
 
+#
 
 # 解法一: 暴力解法O(nk)
 class Solution1(object):
     def maxInWindows(self, num, size):
-        # write code here
 
         if not num or size <= 0:
             return []
@@ -17,15 +17,14 @@ class Solution1(object):
 
 
 # 解法二: 利用双端队列
-class Solution:
+class Solution2(object):
     def maxInWindows(self, num, size):
-        # write code here
 
         if not num or size <= 0:
             return []
 
         res = []
-        if len(num) >= size and size >= 1:
+        if (len(num) >= size) and (size >= 1):
             deque = []
 
             # 这是先找到第一个窗口里面的最大值.
@@ -49,7 +48,13 @@ class Solution:
         return res
 
 
-# 队列的最大值
+s = Solution2()
+print(s.maxInWindows([2, 3, 4, 2, 6, 2, 5, 1], 3))
+
+
+# 引申题目：队列的最大值
+# 定义一个队列并实现max得到队列里的最大值，要求函数max, push_back, pop_front的时间复杂度都是O(1)
+# 和面试题30：包含min函数的栈类似，都是维护两个容器，一个保存数据，一个保存当前最大(小)值
 class Queue(object):
 
     def __init__(self):
