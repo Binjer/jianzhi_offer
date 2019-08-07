@@ -65,7 +65,7 @@ class Solution22(object):
     def isBalanced(self, root):
 
         if not root:
-            return True
+            return True  # 空树是不是平衡的按照题目要求
 
         balanced, depth = self.balancedCore(root)
 

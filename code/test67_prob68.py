@@ -1,4 +1,5 @@
-# 树中两个节点的最低公共祖先
+# 面试题68：树中两个节点的最低公共祖先
+
 
 # 1. 假如树是二叉搜索树
 # 二叉树的问题，一般要用递归解决。
@@ -8,6 +9,7 @@
 # 这里无须区分到底找到的是p还是q，只要找到一个即可返回该结点。
 # 在某结点的左子树上找到了p，不继续深入查找了，在该结点右子树未找到q，题目保证一定有祖先，所以q一定在p的后代里。
 # 遍历到空节点表明没找到，遍历到p或者q就说明找到了，这是递归的两种边界情况。
+
 # 递归的主体如上所述，只在左子树上找到了则返回左子树，两棵子树都找到了则返回root。
 # 由于递归的性质，遍历到解了才开始回溯，所以返回的就是最低公共祖先
 class Solution1(object):
@@ -21,6 +23,7 @@ class Solution1(object):
 
         if root is None:
             return None
+
         if root == p or root == q:
             return root
 
@@ -139,6 +142,7 @@ class Solution(object):
     def getNodePath(self, root, node, path):
         if root.val == node.val:
             return 1
+
         path.append(root)
 
         # 这里实际上要看树节点的定义是什么样的
@@ -150,6 +154,7 @@ class Solution(object):
 
         # 如果找到叶节点还没找到要找的值， 弹出叶节点，回溯到其父节点
         path.pop()
+
         return 0
 
 # 如果是普通的二叉树， 还有一种解题思路：
