@@ -38,7 +38,7 @@ class Solution:
         index = tin.index(post[-1])
 
         root.left = self.reConstructBinaryTree2(post[:index], tin[:index])
-        root.right = self.reConstructBinaryTree2(post[index:-2], tin[index + 1:])
+        root.right = self.reConstructBinaryTree2(post[index:-1], tin[index + 1:])
 
         return root
 
@@ -53,6 +53,6 @@ class Solution:
         index = post.index(pre[1])
 
         root.left = self.reConstructBinaryTree2(pre[1:index + 2], post[:index + 1])
-        root.right = self.reConstructBinaryTree2(pre[index + 2:], post[index + 1:-2])
+        root.right = self.reConstructBinaryTree2(pre[index + 2:], post[index + 1:-1])
 
         return root
