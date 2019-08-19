@@ -51,33 +51,13 @@ print(s1)
 import threading
 
 
-class Singleton1(object):
-    # 记录第一个被创建对象的引用
-    instance = None
-
-    # 记录是否执行过初始化
-    init_flag = False
-
-    def __new__(cls, *args, **kwargs):
-        if cls.instance is None:
-            cls.instance = super().__new__(cls)
-
-        return cls.instance
-
-    def __init__(self):
-        if not Singleton.init_flag:
-            print("初始化类")
-
-            Singleton.init_flag = True
-
-
-obj1 = Singleton1()
-obj2 = Singleton1()
+obj1 = Singleton()
+obj2 = Singleton()
 print(obj1, obj2)
 
 
 def task(arg):
-    obj = Singleton1()
+    obj = Singleton()
     print(obj)
 
 
