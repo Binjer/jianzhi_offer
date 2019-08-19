@@ -1,11 +1,11 @@
 # 面试题5: 替换字符串中的空格
 
+
 # 方法一：Python特性
 # python中字符串有split()方法, 结合join可完成用任意新字符替代字符串中的特定字符 "%20".join(s.split(" "))
 # 也可以直接使用 字符串.replace("旧字符", "新字符")方法 s.replace(" ", "%20")
 class Solution1(object):
     def replaceSpace(self, s):
-        # write code here
         if not s or len(s) == 0:
             return ""
 
@@ -84,7 +84,6 @@ class Solution3(object):
                 p2 -= 1
 
         return A
-
 
 # s = Solution3()
 # print(s.mergeTwoOrderedArray([1, 3, 5, 7, 9], [2, 4, 6, 8, 10]))
