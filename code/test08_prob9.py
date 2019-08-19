@@ -53,6 +53,7 @@ class Solution2(object):
             self.queue2.insert(0, self.queue1.pop())
         # 要保证元素多的那个队列始终为第一个队列
         self.queue1, self.queue2 = self.queue2, self.queue1
+
         return self.queue2.pop()
 
 
