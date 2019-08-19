@@ -1,5 +1,6 @@
 # 面试题11: 旋转数组的最小数字
 
+
 # 把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
 # 输入一个升序的数组的一个旋转，输出旋转数组的最小元素。
 # 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。
@@ -8,7 +9,7 @@
 # 数组内所含元素非负，若数组大小为0，请返回-1。
 class Solution(object):
     def minNumberInRotateArray(self, rotateArray):
-        # write code here
+
         if not rotateArray:
             return
         if len(rotateArray) == 0:
@@ -44,7 +45,7 @@ class Solution(object):
             if rotateArray[indexMid] >= rotateArray[index1]:
                 index1 = indexMid
             # 此时最小元素在前半部分
-            if rotateArray[indexMid] <= rotateArray[index2]:
+            if rotateArray[indexMid] < rotateArray[index2]:
                 index2 = indexMid
 
         return rotateArray[indexMid]
