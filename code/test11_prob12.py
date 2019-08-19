@@ -27,24 +27,28 @@ class Solution(object):
         return False
 
     def hasPathCore(self, matrix, rows, cols, row, col, path, pathIndex, markMatrix):
-        if pathIndex == len(path):
+        if pathIndex == len(path):  # 如果路径为空字符串，那么直接返回
             return True
+
         hasPath = False
 
         # 这里也包含了边界条件判断
-        if row >= 0 and row < rows and col >= 0 and col < cols \
+        if (row >= 0) and (row < rows) and (col >= 0) and (col < cols) \
                 and matrix[row * cols + col] == path[pathIndex] \
                 and not markMatrix[row * cols + col]:
 
             pathIndex += 1
             markMatrix[row * cols + col] = True
+            # 往上下左右走一格
             hasPath = self.hasPathCore(matrix, rows, cols, row + 1, col, path, pathIndex, markMatrix) or \
                       self.hasPathCore(matrix, rows, cols, row - 1, col, path, pathIndex, markMatrix) or \
                       self.hasPathCore(matrix, rows, cols, row, col + 1, path, pathIndex, markMatrix) or \
                       self.hasPathCore(matrix, rows, cols, row, col - 1, path, pathIndex, markMatrix)
-            if not hasPath:
+
+            if not hasPath:  # 找不到路径则返回上一格
                 pathIndex -= 1
                 markMatrix[row * cols + col] = False
+
         return hasPath
 
 
