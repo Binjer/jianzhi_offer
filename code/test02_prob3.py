@@ -39,14 +39,21 @@ class Solution1(object):
         for i in range(len(numbers)):
             while numbers[i] != i:
                 if numbers[i] == numbers[numbers[i]]:
-                    duplication[0] = numbers[i]
+                    duplication.append(numbers[i])
                     return True
                 else:
-                    temp = numbers[i]
+                    temp = numbers[i]  # 把当前位置元素交换到与值对应的索引位置处
                     numbers[i] = numbers[temp]
                     numbers[temp] = temp
+                    # numbers[i], numbers[numbers[i]] = numbers[numbers[i]], numbers[i]
 
         return False
+
+
+s = Solution1()
+duplication = []
+print(s.duplicate([2, 3, 1, 0, 2, 5, 3], duplication))
+print(duplication)
 
 
 # 题目变形： 增加了额外的要求
@@ -77,7 +84,7 @@ class Solution2:
         :type nums: List[int]
         :rtype int
         """
-        if len(nums) <= 0 or not numbers:
+        if len(nums) <= 0 or not nums:
             return
 
         length = len(nums)
@@ -85,7 +92,7 @@ class Solution2:
         end = length - 1
 
         while end >= start:
-            middle = start + (end - start) / 2
+            middle = start + (end - start) // 2
             count = self.countNum(nums, length, start, middle)
             if end == start:
                 if count > 1:
@@ -137,3 +144,5 @@ class Solution2:
         return l
 
 
+s = Solution2()
+print(s.duplicateInArray([1, 2, 3, 3]))
