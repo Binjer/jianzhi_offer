@@ -13,7 +13,7 @@ class TreeNode:
 class Solution:
     # 返回构造的TreeNode根节点
     def reConstructBinaryTree(self, pre, tin):
-        # write code here
+
         if not pre or not tin:
             return None
 
@@ -30,7 +30,7 @@ class Solution:
 
     # 已知中序遍历结果和后序遍历结果
     def reConstructBinaryTree2(self, post, tin):
-        # write code here
+
         if not post or not tin:
             return None
 
@@ -44,7 +44,7 @@ class Solution:
 
     # 已知前序遍历结果和后序遍历结果
     def reConstructBinaryTree3(self, pre, post):
-        # write code here
+
         if not post or not pre:
             return None
 
