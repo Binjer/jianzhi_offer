@@ -18,7 +18,7 @@ class Solution1(object):
         if not s or len(s) <= 0:
             return 0
 
-        dp = [1 for i in range(0, len(s) + 1)]
+        dp = [1 for i in range(len(s) + 1)]
 
         for i in range(2, len(dp)):
             if s[i - 2] != "0" and int(s[i - 2:i]) < 26:
