@@ -102,6 +102,8 @@ class Solution3(object):
 
                     minValues[i][j] = min(up, left) + array[i][j]
 
+        print(minValues)
+
         return minValues[rows - 1][cols - 1]
 
 
