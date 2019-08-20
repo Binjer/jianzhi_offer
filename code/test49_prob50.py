@@ -146,8 +146,9 @@ class Solution21(object):
         :type char: str
         :rtype: void
         """
+        self.alist.append(char)
+
         if char not in self.char_dict:
-            self.alist.append(char)
             self.char_dict[char] = 1
         else:
             self.char_dict[char] = -1
