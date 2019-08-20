@@ -42,6 +42,8 @@ class Solution(object):
                 cur = cur.next
             pre.next = None
 
+        return head
+
 
 # 题目2：删除有序链表中重复的节点, 这里是重复的元素不保留的情况
 class Solution2(object):
