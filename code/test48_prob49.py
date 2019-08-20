@@ -2,6 +2,7 @@
 
 # 只包含因子2,3和5的数成为丑数，求按从小到大的熟悉怒的第1500个丑数。习惯上我们把1当作第一个丑数
 
+
 # 解法一
 # 依次判断每一个数是不是丑数, 直到找够n个丑数为止
 # 缺点: 效率很低.
@@ -38,8 +39,8 @@ class Solution1(object):
         return 1 if num == 1 else 0
 
 
-# s1 = Solution1()
-# print(s1.GetUglyNumber_Solution(10))
+s1 = Solution1()
+print(s1.GetUglyNumber_Solution(10))
 # print(s1.GetUglyNumber_Solution(1500))  # 运行时间会非常久
 
 
