@@ -14,7 +14,7 @@ class Solution1(object):
         self.permutation(charlist, 0, res)
 
         res = [''.join(res[i]) for i in range(len(res))]
-        # res.sort()
+        res.sort()
 
         return res
 
@@ -65,10 +65,10 @@ class Solution2(object):
                 self.helper(ss[:i] + ss[i + 1:], res, path + ss[i])
 
 
-# s = Solution2()
-# res = s.Permutation("aac")
-# print(res)
-# print(len(res))
+s = Solution2()
+res = s.Permutation("aac")
+print(res)
+print(len(res))
 
 
 # # 组合问题  这是combinations库的源代码
