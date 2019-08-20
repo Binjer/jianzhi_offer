@@ -57,6 +57,19 @@ class Solution(object):
             pHead.next = pCloneNode.next
             pHead = pHead.next
 
+        # 更统一的处理思路
+        # newHead = RandomListNode(-1)
+        # newHead.next = pHead
+        #
+        # pre = newHead
+        # cur = pHead
+        #
+        # while cur is not None:
+        #     pre.next = cur.next
+        #     pre = pre.next
+        #     cur.next = pre.next
+        #     cur = cur.next
+
         return pCloneHead
 
 
