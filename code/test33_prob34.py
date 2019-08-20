@@ -15,7 +15,7 @@ class Solution1(object):
             return pathAll
         currentSum = 0
 
-        self.FindPathnew(root, expectNumber, path, pathAll, currentSum)
+        self.FindPathCore(root, expectNumber, path, pathAll, currentSum)
 
         return pathAll
 
@@ -33,6 +33,7 @@ class Solution1(object):
                 onepath.append(val)
             pathAll.append(onepath)
             # pathAll.append(copy.deepcopy(path)) # 也可借助copy模块的deepcopy来实现一条路径的复制
+
         if currentSum < expectNumber:
             if root.left is not None:
                 self.FindPathCore(root.left, expectNumber, path, pathAll, currentSum)
