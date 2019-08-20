@@ -30,7 +30,7 @@ class Solution1(object):
 class Solution2(object):
     # 返回镜像树的根节点
     def Mirror(self, root):
-        # write code here
+
         if not root:
             return
 
