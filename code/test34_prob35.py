@@ -59,9 +59,8 @@ class Solution(object):
 
         return pCloneHead
 
-    # 递归法
 
-
+# 递归法
 class Solution2(object):
     # 返回 RandomListNode
     def Clone(self, pHead):
