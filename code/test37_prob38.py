@@ -121,3 +121,23 @@ print(len(res))
 # res = []
 # list_zuhe('', mylist, res)
 # print(res)
+
+
+# 思路: 先用列举法,举例出组合元素长度分别是1,2,..,len(str)时的具体元素.
+# 前n个字符合体即li[:m],拼接上后面li[m:]的每一个字符.
+def combination_str(str):
+    li = list(str)
+    res = []
+
+    for m in range(len(li)):
+        if m == 0:
+            res.extend([i for i in li])
+        else:
+            res.extend(''.join(li[:m]) + i for i in li[m:])
+
+    res = sorted(list(set(res)))
+
+    return res
+
+
+print(combination_str("abc"))
