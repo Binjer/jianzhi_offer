@@ -33,9 +33,10 @@ class Solution1(object):
         return maxValues[rows - 1][cols - 1]
 
 
-# s1 = Solution1()
-# print(s1.getMaxValue1([[1, 3, 1], [1, 5, 1], [4, 2, 1]]))
-# print(s1.getMaxValue1([[1, 10, 3, 8], [12, 2, 9, 6], [5, 7, 4, 11], [3, 7, 16, 5]]))
+print("方法一")
+s1 = Solution1()
+print(s1.getMaxValue1([[1, 3, 1], [1, 5, 1], [4, 2, 1]]))
+print(s1.getMaxValue1([[1, 10, 3, 8], [12, 2, 9, 6], [5, 7, 4, 11], [3, 7, 16, 5]]))
 
 
 # 优化一下, 不需要用到二维数组来保存所有格子的礼物价值
@@ -63,12 +64,13 @@ class Solution2:
 
                 maxValues[j] = max(up, left) + array[i][j]
 
-        return maxValues[cols - 1]
+        return maxValues[-1]
 
 
-# s1 = Solution2()
-# print(s1.getMaxValue1([[1, 3, 1], [1, 5, 1], [4, 2, 1]]))
-# print(s1.getMaxValue1([[1, 10, 3, 8], [12, 2, 9, 6], [5, 7, 4, 11], [3, 7, 16, 5]]))
+print("方法二")
+s1 = Solution2()
+print(s1.getMaxValue1([[1, 3, 1], [1, 5, 1], [4, 2, 1]]))
+print(s1.getMaxValue1([[1, 10, 3, 8], [12, 2, 9, 6], [5, 7, 4, 11], [3, 7, 16, 5]]))
 
 
 # 引申：求最小路径和(或者理解为最小的礼物价值)
@@ -103,6 +105,7 @@ class Solution3(object):
         return minValues[rows - 1][cols - 1]
 
 
+print("求最小礼物价值")
 s2 = Solution3()
 print(s2.getMaxValue1([[1, 3, 1], [1, 5, 1], [4, 2, 1]]))
 print(s2.getMaxValue1([[1, 10, 3, 8], [12, 2, 9, 6], [5, 7, 4, 11], [3, 7, 16, 5]]))
