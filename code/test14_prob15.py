@@ -23,7 +23,7 @@ class Solution(object):
         # 二进制中有多少个1，可以做多少次这样的运算。
         count = 0
         while n:
-            n = n & (n - 1)
+            n = n & (n - 1) & 0xFFFFFFFF  # python中不会存在溢出问题，因此要将数据转换为32位
             count += 1
 
         return count
