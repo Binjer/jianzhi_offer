@@ -6,6 +6,7 @@
 
 # 同leetcode91: 解码方法
 
+
 # 动态规划解法
 # 动态转换方程: f(i) = f(i-1) + g(i, i-1)*f(i-2)
 class Solution1(object):
