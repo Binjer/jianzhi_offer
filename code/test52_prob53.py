@@ -96,6 +96,13 @@ class Solution11(object):
             return left
 
 
+print("0~n-1中缺失的数字")
+s = Solution11()
+print(s.getMissingNumber([0, 1, 2, 3, 5, 6, 7, 8]))
+print(s.getMissingNumber([1, 2, 3, 4, 5, 6, 7, 8]))
+print(s.getMissingNumber([0, 1, 2, 3, 4, 5, 6, 7]))
+
+
 # 题目变形2:
 # 假设一个单调递增的数组里的每个元素都是整数并且是唯一的。
 # 请编程实现一个函数找出数组中任意一个数值等于其下标的元素。
@@ -109,12 +116,19 @@ class Solution22(object):
         right = len(nums) - 1
 
         while left <= right:
-            middle = (left + right) >> 1
+            middle = (left + right) // 2
             if nums[middle] == middle:
-                return middle
+                return nums[middle]
             elif nums[middle] > middle:
                 right = middle - 1
             else:
                 left = middle + 1
 
         return -1
+
+
+print("找到数组中任意一个下标与值相等的元素")
+s2 = Solution22()
+print(s2.getNumberSameAsIndex([-3, -1, 1, 3, 5]))
+print(s2.getNumberSameAsIndex([-3, -1, 2, 3, 5]))
+print(s2.getNumberSameAsIndex([0, -1, 1, 3, 5]))
