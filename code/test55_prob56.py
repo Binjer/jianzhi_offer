@@ -53,6 +53,10 @@ class Solution1(object):
         return indexBit
 
 
+s = Solution1()
+print(s.findNumsAppearOnce([5, 3, 1, 1, 2, 2]))
+
+
 # 题目二:
 # 数组中唯一只出现一次的数字
 # 在一个数组中除了一个数字只出现一次之外，其他数字都出现了三次。
@@ -104,6 +108,3 @@ class Solution22(object):
 
 s = Solution22()
 print(s.findNumberAppearingOnce([1, 2, 2, 2, 1, 1, 3, 4, 4, 4, 5, 5, 5]))
-
-
-
